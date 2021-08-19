@@ -12,9 +12,9 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 
 class TrackerTableAdapter(private val context: Context): RecyclerView.Adapter<TrackerTableAdapter.CalendarViewHolder>() {
-    private val itemList = mutableListOf<Cell>().apply {
+    private val itemList = mutableListOf<Day>().apply {
         for (i in 1..35) {
-            this.add(Cell())
+            this.add(Day())
         }
     }
 
@@ -45,7 +45,7 @@ class TrackerTableAdapter(private val context: Context): RecyclerView.Adapter<Tr
         val lineForBottom: TextView = view.findViewById(R.id.txtForBottom)
     }
 
-    private fun onItemClicked(item: Cell, imageView: ImageView) {
+    private fun onItemClicked(item: Day, imageView: ImageView) {
         if (item.isImageInserted) {
             showImageRemovePopUp(item, imageView)
         } else {
@@ -53,13 +53,13 @@ class TrackerTableAdapter(private val context: Context): RecyclerView.Adapter<Tr
         }
     }
 
-    private fun showImageSelectionPopUp(item: Cell, imageView: ImageView) {
+    private fun showImageSelectionPopUp(item: Day, imageView: ImageView) {
         AlertDialog.Builder(context)
                 .setMessage("insert image?")
                 .setPositiveButton("Insert", DialogInterface.OnClickListener { dialog, _ ->
                     dialog.dismiss()
                     item.isImageInserted = true
-                    imageView.setImageResource(R.mipmap.tracker_icon_done_foreground)
+                    imageView.setImageResource(R.drawable.tracker_icon_done)
                 })
                 .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, _ ->
                     dialog.dismiss()
@@ -67,7 +67,7 @@ class TrackerTableAdapter(private val context: Context): RecyclerView.Adapter<Tr
                 .show()
     }
 
-    private fun showImageRemovePopUp(item: Cell, imageView: ImageView) {
+    private fun showImageRemovePopUp(item: Day, imageView: ImageView) {
         AlertDialog.Builder(context)
                 .setMessage("remove image?")
                 .setPositiveButton("Remove", DialogInterface.OnClickListener { dialog, _ ->

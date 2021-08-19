@@ -1,5 +1,5 @@
 package com.example.goaltracker
 
-class Cell(
+class Day(
         var isImageInserted: Boolean = false
 )
