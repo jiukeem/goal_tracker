@@ -3,6 +3,9 @@
 
     <data>
 
+        <variable
+            name="viewModel"
+            type="com.example.goaltracker.MainViewModel" />
 
     </data>
 
