@@ -20,7 +20,6 @@ class MainActivity : AppCompatActivity() {
     private val DAYS_LIST = "daysList"
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        Log.d("MainActivity1", "daysList: $daysList")
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         binding?.viewModel = MainViewModel()
@@ -46,7 +45,6 @@ class MainActivity : AppCompatActivity() {
             daysList.addAll(savedInfo!!.split(",")
                 .map { Day(isImageInserted = it == "true") })
         }
-        Log.d("MainActivity2", "daysList: $daysList")
         val editor = prefs.edit()
         editor.clear()
         editor.apply()
@@ -57,8 +55,6 @@ class MainActivity : AppCompatActivity() {
         for (day in daysList) {
             jsonArray.put(day.isImageInserted)
         }
-        Log.d("MainActivity", "jsonArray: $jsonArray")
-        Log.d("MainActivity3", "daysList: $daysList")
         val editor = prefs.edit()
         editor.putString(DAYS_LIST, jsonArray.toString())
         editor.apply()
