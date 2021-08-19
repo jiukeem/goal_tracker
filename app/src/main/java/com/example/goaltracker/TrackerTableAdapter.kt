@@ -34,9 +34,6 @@ class TrackerTableAdapter(private val context: Context): RecyclerView.Adapter<Tr
                 this.setImageResource(R.drawable.tracker_icon_done)
             }
         }
-        if (position >= 28) {
-            holder.lineForBottom.setBackgroundColor(ContextCompat.getColor(context, R.color.black))
-        }
     }
 
     fun addWholeData(newItemList: List<Day>) {

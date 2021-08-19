@@ -28,15 +28,10 @@
             tools:src="@drawable/tracker_icon_done" />
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/black"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
             android:id="@+id/txtForBottom"
             android:layout_width="match_parent"
             android:layout_height="1dp"
+            android:background="@color/black"
             app:layout_constraintBottom_toBottomOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
