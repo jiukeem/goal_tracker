@@ -3,7 +3,6 @@ package com.example.goaltracker
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import androidx.databinding.DataBindingUtil
 import com.example.goaltracker.databinding.ActivityMainBinding
 import org.json.JSONArray
