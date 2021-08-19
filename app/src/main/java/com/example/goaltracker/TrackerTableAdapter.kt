@@ -12,11 +12,7 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 
 class TrackerTableAdapter(private val context: Context): RecyclerView.Adapter<TrackerTableAdapter.CalendarViewHolder>() {
-    private val itemList = mutableListOf<Day>().apply {
-        for (i in 1..35) {
-            this.add(Day())
-        }
-    }
+    private val itemList = mutableListOf<Day>()
 
     // 이 레이아웃에 연결할거에요. 뷰홀더에게 어떤 레이아웃인지 인플레이트해서 넘겨주는 역할. (inflate 란 레이아웃을 코드에서 사용할 수 있도록 객체화해주는 과정이다.)
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CalendarViewHolder {
@@ -33,10 +29,20 @@ class TrackerTableAdapter(private val context: Context): RecyclerView.Adapter<Tr
     override fun onBindViewHolder(holder: CalendarViewHolder, position: Int) {
         holder.imageView.apply {
             setOnClickListener { onItemClicked(itemList[position], this) } // 이미지가 있는 경우는 반대로 없애야하니 viewmodel 로 콜백을 보내서 거기서 처리하자
+
+            if (itemList[position].isImageInserted) {
+                this.setImageResource(R.drawable.tracker_icon_done)
+            }
         }
         if (position >= 28) {
             holder.lineForBottom.setBackgroundColor(ContextCompat.getColor(context, R.color.black))
         }
+    }
+
+    fun addWholeData(newItemList: List<Day>) {
+        itemList.clear()
+        itemList.addAll(newItemList)
+        notifyDataSetChanged()
     }
 
     // 이 레이아웃 안에서 이 항목들을 조정할거에요. 컴포넌트와 변수를 연결해주는 역할
